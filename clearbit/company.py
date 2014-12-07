@@ -8,7 +8,7 @@ class Company(Resource):
         if 'domain' in params:
             url = '/domain/' + params['domain']
         elif 'id' in params:
-            url = params['id']
+            url = '/' + params['id']
         else:
             raise ParamsInvalidError('Invalid values')
 

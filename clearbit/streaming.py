@@ -6,7 +6,7 @@ class PersonCompany(PersonCompany):
     endpoint = 'https://person-stream.clearbit.com/v1/combined'
 
 class Person(Person):
-    endpoint = 'https://person-stream.clearbit.com/v1/person'
+    endpoint = 'https://person-stream.clearbit.com/v1/people'
 
 class Company(Company):
-    endpoint = 'https://company-stream.clearbit.com/v1/company'
+    endpoint = 'https://company-stream.clearbit.com/v1/companies'

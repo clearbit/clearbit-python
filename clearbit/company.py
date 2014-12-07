@@ -1,7 +1,7 @@
 from clearbit.resource import Resource
 
 class Company(Resource):
-    endpoint = 'https://company.clearbit.com/v1/company'
+    endpoint = 'https://company.clearbit.com/v1/companies'
 
     @classmethod
     def find(cls, **params):
@@ -12,4 +12,4 @@ class Company(Resource):
         else:
             raise ParamsInvalidError('Invalid values')
 
-        return get(url)
+        return cls.get(url)

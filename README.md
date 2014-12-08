@@ -2,6 +2,16 @@
 
 A Python API client to [https://clearbit.com](https://clearbit.com).
 
+## Installation
+
+To install the Clearbit Python bindings, run:
+
+    pip install clearbit
+
+Or
+
+    easy_install clearbit
+
 ## Usage
 
 First authorize requests by setting the API key found on your [account's settings page](https://clearbit.com/keys).

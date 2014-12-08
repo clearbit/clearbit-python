@@ -43,10 +43,9 @@ setup(
     author='Clearbit',
     author_email='support@clearbit.com',
     url='https://clearbit.com',
-    packages=['clearbit', 'clearbit.test'],
+    packages=['clearbit'],
     package_data={'clearbit': ['../VERSION']},
     install_requires=install_requires,
-    test_suite='clearbit.test.all',
     use_2to3=True,
     classifiers=[
         "Development Status :: 5 - Production/Stable",

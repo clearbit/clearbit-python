@@ -7,15 +7,14 @@ A Python API client to [https://clearbit.com](https://clearbit.com).
 First authorize requests by setting the API key found on your [account's settings page](https://clearbit.com/keys).
 
     import clearbit
-    import clearbit.streaming
 
-    clearbit.api_key = 'mykey'
+    clearbit.key = 'mykey'
 
 You can also set the API key via the CLEARBIT_KEY environment variable.
 
 Then you can lookup people by email address:
 
-    person = clearbit.streaming.Person.find(email='info@eribium.org')
+    person = clearbit.Person.find(email='info@eribium.org',streaming=True)
 
 If the person can't be found, then `None` will be returned.
 
@@ -25,7 +24,7 @@ See the [documentation](https://clearbit.com/docs#person-api) for more informati
 
 You can lookup company data by domain name:
 
-    company = clearbit.streaming.Company(domain='uber.com')
+    company = clearbit.Company(domain='uber.com',streaming=True)
 
 If the company can't be found, then `None` will be returned.
 

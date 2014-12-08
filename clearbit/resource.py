@@ -12,7 +12,14 @@ class Resource(dict):
             if o in options:
                 params[o] = options[o]
 
-        response = requests.get(cls.endpoint + url, params=params, auth=(clearbit.api_key, ''))
+        endpoint = cls.endpoint + url
+
+        if 'stream' in options:
+            endpoint = endpoint.replace('.', '-stream', 1)
+
+        key = options.get('key', clearbit.key)
+
+        response = requests.get(endpoint, params=params, auth=(key, ''))
 
         if response.status_code == 200:
             return cls(response.json())

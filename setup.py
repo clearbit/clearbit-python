@@ -16,11 +16,7 @@ path, script = os.path.split(sys.argv[0])
 os.chdir(os.path.abspath(path))
 
 install_requires = []
-
 install_requires.append('requests >= 0.8.8')
-
-with open('README.md') as f:
-    long_description = f.read()
 
 # Don't import clearbit module here, since deps may not be installed
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'clearbit'))
@@ -33,13 +29,17 @@ if sys.version_info < (3, 0):
     except ImportError:
         install_requires.append('simplejson')
 
+def read(*paths):
+    """Build a file path from *paths* and return the contents."""
+    with open(os.path.join(*paths), 'r') as f:
+        return f.read()
 
 setup(
     name='clearbit',
     cmdclass={'build_py': build_py},
     version=VERSION,
     description='Clearbit python bindings',
-    long_description=long_description,
+    long_description=read('README.rst'),
     author='Clearbit',
     author_email='support@clearbit.com',
     url='https://clearbit.com',
@@ -47,6 +47,7 @@ setup(
     package_data={'clearbit': ['../VERSION']},
     install_requires=install_requires,
     use_2to3=True,
+    include_package_data=True,
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",

@@ -48,6 +48,7 @@ setup(
     install_requires=install_requires,
     use_2to3=True,
     include_package_data=True,
+    test_suite='tests',
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",

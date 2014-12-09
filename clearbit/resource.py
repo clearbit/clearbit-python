@@ -8,14 +8,14 @@ class Resource(dict):
     def get(cls, url, **options):
         params = {}
 
-        for o in ['webook_url', 'webhook_id', 'subscribe']:
+        for o in ['webhook_url', 'webhook_id', 'subscribe']:
             if o in options:
                 params[o] = options[o]
 
         endpoint = cls.endpoint + url
 
         if 'stream' in options:
-            endpoint = endpoint.replace('.', '-stream', 1)
+            endpoint = endpoint.replace('.', '-stream.', 1)
 
         key = options.get('key', clearbit.key)
 

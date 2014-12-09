@@ -1,5 +1,10 @@
+import sys
 import unittest
-from unittest.mock import patch
+
+if sys.version_info > (3, 3):
+    from unittest.mock import patch
+else:
+    from mock import patch
 
 from clearbit.resource import Resource
 

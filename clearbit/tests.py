@@ -6,7 +6,7 @@ if sys.version_info > (3, 3):
 else:
     from mock import patch
 
-from clearbit.resource import Resource
+from clearbit import *
 
 class TestResource(unittest.TestCase):
     @patch('clearbit.resource.requests')
@@ -33,3 +33,31 @@ class TestResource(unittest.TestCase):
     def test_stream(self, requests):
         Resource.get('http://x.clearbit.com/test', stream=True)
         requests.get.assert_called_with('http://x-stream.clearbit.com/test', params={}, auth=(None, ''))
+
+class TestPerson(unittest.TestCase):
+    @patch('clearbit.resource.requests')
+    def test_endpoint(self, requests):
+        Person.find(email='user@example.com')
+        requests.get.assert_called_with('https://person.clearbit.com/v1/people/email/user@example.com', params={}, auth=(None, ''))
+
+    @patch('clearbit.resource.requests')
+    def test_find_by_id(self, requests):
+        Person.find(id='theid')
+        requests.get.assert_called_with('https://person.clearbit.com/v1/people/theid', params={}, auth=(None, ''))
+
+class TestCompany(unittest.TestCase):
+    @patch('clearbit.resource.requests')
+    def test_endpoint(self, requests):
+        Company.find(domain='example.com')
+        requests.get.assert_called_with('https://company.clearbit.com/v1/companies/domain/example.com', params={}, auth=(None, ''))
+
+    @patch('clearbit.resource.requests')
+    def test_find_by_id(self, requests):
+        Company.find(id='theid')
+        requests.get.assert_called_with('https://company.clearbit.com/v1/companies/theid', params={}, auth=(None, ''))        
+
+class TestPersonCompany(unittest.TestCase):
+    @patch('clearbit.resource.requests')
+    def test_endpoint(self, requests):
+        PersonCompany.find(email='user@example.com')
+        requests.get.assert_called_with('https://person.clearbit.com/v1/combined/email/user@example.com', params={}, auth=(None, ''))

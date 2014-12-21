@@ -20,3 +20,6 @@ class Company(Resource):
                 options['params'][o] = options[o]
 
         return cls.get(url, **options)
+
+    def flag(self, **attrs):
+        return self.__class__.post('/%s/flag' % self['id'])

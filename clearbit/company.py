@@ -1,15 +1,22 @@
 from clearbit.resource import Resource
+from clearbit.error import (ParamsInvalidError)
 
 class Company(Resource):
     endpoint = 'https://company.clearbit.com/v1/companies'
 
     @classmethod
-    def find(cls, **params):
-        if 'domain' in params:
-            url = '/domain/' + params['domain']
-        elif 'id' in params:
-            url = '/' + params['id']
+    def find(cls, **options):
+        if 'domain' in options:
+            url = '/domain/' + options['domain']
+        elif 'id' in options:
+            url = '/' + options['id']
         else:
             raise ParamsInvalidError('Invalid values')
 
-        return cls.get(url)
+        options.setdefault('params', {})
+
+        for o in ['webhook_url', 'webhook_id', 'subscribe']:
+            if o in options:
+                options['params'][o] = options[o]
+
+        return cls.get(url, **options)

@@ -24,7 +24,7 @@ You can also set the API key via the CLEARBIT_KEY environment variable.
 
 Then you can lookup people by email address:
 
-    person = clearbit.Person.find(email='info@eribium.org',stream=True)
+    person = clearbit.Person.find(email='alex@alexmaccaw.com',stream=True)
 
 If the person can't be found, then `None` will be returned.
 

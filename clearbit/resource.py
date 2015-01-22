@@ -5,6 +5,13 @@ class Resource(dict):
     endpoint = ''
 
     @classmethod
+    def new(cls, item):
+        if isinstance(item, list):
+            return (cls(rec) for rec in item)
+        else:
+            return cls(item)
+
+    @classmethod
     def get(cls, url, **options):
         params = options.get('params', {})
         key = options.get('key', clearbit.key)
@@ -16,7 +23,7 @@ class Resource(dict):
         response = requests.get(endpoint, params=params, auth=(key, ''))
 
         if response.status_code == 200:
-            return cls(response.json())
+            return cls.new(response.json())
         if response.status_code == 202:
             return cls({ 'pending': True })
         elif response.status_code == requests.codes.not_found:
@@ -31,8 +38,16 @@ class Resource(dict):
         endpoint = cls.endpoint + url
 
         response = requests.post(endpoint, params=params, auth=(key, ''))
+        response.raise_for_status()
 
-        if response.status_code == 200:
-            return response
-        else:
-            response.raise_for_status()
+        return response
+
+    @classmethod
+    def delete(cls, url, **options):
+        key = options.get('key', clearbit.key)
+        endpoint = cls.endpoint + url
+
+        response = requests.delete(endpoint, auth=(key, ''))
+        response.raise_for_status()
+
+        return response

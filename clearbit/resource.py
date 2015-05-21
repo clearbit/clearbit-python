@@ -39,8 +39,6 @@ class Resource(dict):
         if options.pop('stream', False):
             endpoint = endpoint.replace('.', '-stream.', 1)
 
-        print(options)
-
         response = requests.get(endpoint, **options)
 
         if response.status_code == 200:

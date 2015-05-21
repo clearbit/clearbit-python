@@ -7,14 +7,8 @@ class PersonCompany(Resource):
     @classmethod
     def find(cls, **options):
         if 'email' in options:
-            url = '/email/' + options['email']
+            url = '/email/' + options.pop('email')
         else:
             raise ParamsInvalidError('Invalid values')
-
-        options.setdefault('params', {})
-
-        for o in ['webhook_url', 'webhook_id', 'subscribe']:
-            if o in options:
-                options['params'][o] = options[o]
 
         return cls.get(url, **options)

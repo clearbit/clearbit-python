@@ -7,21 +7,11 @@ class Person(Resource):
     @classmethod
     def find(cls, **options):
         if 'email' in options:
-            url = '/email/' + options['email']
-        elif 'twitter' in options:
-            url = '/twitter/' + options['twitter']
-        elif 'github' in options:
-            url = '/github/' + options['github']
+            url = '/email/' + options.pop('email')
         elif 'id' in options:
-            url = '/' + options['id']
+            url = '/' + options.pop('id')
         else:
             raise ParamsInvalidError('Invalid values')
-
-        options.setdefault('params', {})
-
-        for o in ['webhook_url', 'webhook_id', 'subscribe']:
-            if o in options:
-                options['params'][o] = options[o]
 
         return cls.get(url, **options)
 

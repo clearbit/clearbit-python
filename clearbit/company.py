@@ -7,17 +7,11 @@ class Company(Resource):
     @classmethod
     def find(cls, **options):
         if 'domain' in options:
-            url = '/domain/' + options['domain']
+            url = '/domain/' + options.pop('domain')
         elif 'id' in options:
-            url = '/' + options['id']
+            url = '/' + options.pop('id')
         else:
             raise ParamsInvalidError('Invalid values')
-
-        options.setdefault('params', {})
-
-        for o in ['webhook_url', 'webhook_id', 'subscribe']:
-            if o in options:
-                options['params'][o] = options[o]
 
         return cls.get(url, **options)
 

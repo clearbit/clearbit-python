@@ -6,16 +6,9 @@ class Watchlist(Resource):
     @classmethod
     def search(cls, **options):
         if 'path' in options:
-            path = options['path']
-            del options['path']
+            path = options.pop('path')
         else:
             path = '/search/all'
-
-        options.setdefault('params', {})
-
-        for o in ['name', 'list', 'fuzzy']:
-            if o in options:
-                options['params'][o] = options[o]
 
         response = cls.post(path, **options)
 

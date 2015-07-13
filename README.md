@@ -38,7 +38,7 @@ See the [documentation](https://clearbit.com/docs#person-api) for more informati
 You can lookup company data by domain name:
 
 ```python
-company = clearbit.Company(domain='uber.com',stream=True)
+company = clearbit.Company.find(domain='uber.com',stream=True)
 ```
 
 If the company can't be found, then `None` will be returned.

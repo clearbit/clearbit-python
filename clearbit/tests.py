@@ -91,3 +91,7 @@ class TestPersonCompany(unittest.TestCase):
     def test_endpoint(self, requests):
         PersonCompany.find(email='user@example.com')
         requests.get.assert_called_with('https://person.clearbit.com/v1/combined/email/user@example.com', params={}, auth=(None, ''))
+
+        
+if __name__ == '__main__':
+        unittest.main()

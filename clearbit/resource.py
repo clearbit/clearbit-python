@@ -15,11 +15,12 @@ class Resource(dict):
         instance_s = None
         if isinstance(item, list):
             instance_s = (cls(rec) for rec in item)
+            for instance in instance_s:
+                instance['response'] = response
+             
         else:
             instance_s = cls(item)
-
-        if response != None:
-            instance['response'] = response
+            instance_s['response'] = response
             
         return instance_s
 
@@ -57,7 +58,7 @@ class Resource(dict):
         else:
             response.raise_for_status()
 
-        instance.response = response
+        instance['response'] = response
         return instance
     
 

@@ -22,11 +22,12 @@ First authorize requests by setting the API key found on your [account's setting
 
 You can also set the API key via the CLEARBIT_KEY environment variable.
 
-Then you can lookup people by email address:
+Then you can lookup people by email address. If the email's domain is corporate we'll also return a company response.
 
-    person = clearbit.Person.find(email='alex@alexmaccaw.com',stream=True)
+    response = clearbit.Enrichment.find(email='alex@clearbit.com',stream=True)
 
-If the person can't be found, then `None` will be returned.
+    person = response['person']
+    print(person['name'])
 
 See the [documentation](https://clearbit.com/docs#person-api) for more information.
 

@@ -39,3 +39,9 @@ You can lookup company data by domain name:
 If the company can't be found, then `None` will be returned.
 
 See the [documentation](https://clearbit.com/docs#company-api) for more information.
+
+## Testing
+
+Set the `PYTHONPATH` env var to the current directory to load the library locally:
+
+    export PYTHONPATH=.

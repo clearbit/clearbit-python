@@ -1,6 +1,7 @@
 import os
 
 from clearbit.company import Company
+from clearbit.discovery import Discovery
 from clearbit.error import (ClearbitError, ParamsInvalidError)
 from clearbit.person import Person
 from clearbit.person_company import PersonCompany

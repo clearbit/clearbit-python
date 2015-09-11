@@ -23,13 +23,11 @@ clearbit.key = 'mykey'
 
 You can also set the API key via the CLEARBIT_KEY environment variable.
 
-Then you can lookup people by email address:
+Then you can lookup people by email address. If the email's domain is corporate we'll also return a company response.
 
 ```python
-person = clearbit.Person.find(email='alex@alexmaccaw.com',stream=True)
+response = clearbit.Enrichment.find(email='alex@clearbit.com',stream=True)
 ```
-
-If the person can't be found, then `None` will be returned.
 
 See the [documentation](https://clearbit.com/docs#person-api) for more information.
 
@@ -44,3 +42,9 @@ company = clearbit.Company.find(domain='uber.com',stream=True)
 If the company can't be found, then `None` will be returned.
 
 See the [documentation](https://clearbit.com/docs#company-api) for more information.
+
+## Testing
+
+Set the `PYTHONPATH` env var to the current directory to load the library locally:
+
+    export PYTHONPATH=.

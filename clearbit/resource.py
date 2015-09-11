@@ -67,6 +67,9 @@ class Resource(dict):
         options = cls.extract_options(values)
         endpoint = cls.endpoint + url
 
+        # Always post as a JSON object
+        options['json'] = options.pop('params', {})
+
         response = requests.post(endpoint, **options)
         response.raise_for_status()
 

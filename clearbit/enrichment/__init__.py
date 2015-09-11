@@ -1,6 +1,6 @@
-from company import Company
-from person import Person
-from person_company import PersonCompany
+from .company import Company
+from .person import Person
+from .person_company import PersonCompany
 
 class Enrichment:
     @classmethod

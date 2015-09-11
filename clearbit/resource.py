@@ -17,11 +17,11 @@ class Resource(dict):
             instance_s = (cls(rec) for rec in item)
             for instance in instance_s:
                 instance['response'] = response
-             
+
         else:
             instance_s = cls(item)
             instance_s['response'] = response
-            
+
         return instance_s
 
     @classmethod
@@ -49,6 +49,7 @@ class Resource(dict):
         response = requests.get(endpoint, **options)
 
         instance = None
+
         if response.status_code == 200:
             instance = cls.new(response.json())
         if response.status_code == 202:
@@ -58,9 +59,11 @@ class Resource(dict):
         else:
             response.raise_for_status()
 
-        instance['response'] = response
+        if instance:
+            instance['response'] = response
+
         return instance
-    
+
 
     @classmethod
     def post(cls, url, **values):

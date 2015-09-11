@@ -5,8 +5,5 @@ class Discovery(Resource):
 
     @classmethod
     def search(cls, **options):
-        if type(options.get('query')) is dict:
-            options['query'] = [options['query']]
-
         response = cls.post('/companies/search', **options)
         return(response.json())

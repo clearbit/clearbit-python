@@ -39,7 +39,7 @@ setup(
     cmdclass={'build_py': build_py},
     version=VERSION,
     description='Clearbit python bindings',
-    long_description=read('README.rst'),
+    long_description=read('README.md'),
     author='Clearbit',
     author_email='support@clearbit.com',
     url='https://clearbit.com',

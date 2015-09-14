@@ -2,10 +2,10 @@ import os
 
 from clearbit.discovery import Discovery
 from clearbit.error import (ClearbitError, ParamsInvalidError)
-from clearbit.enrichment import Enrichment
-from clearbit.enrichment import Company
-from clearbit.enrichment import Person
-from clearbit.enrichment import PersonCompany
+from .enrichment import Enrichment
+from .enrichment import Company
+from .enrichment import Person
+from .enrichment import PersonCompany
 from clearbit.resource import Resource
 from clearbit.watchlist import Watchlist
 from clearbit.watchlist import Entity as WatchlistEntity

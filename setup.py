@@ -43,7 +43,7 @@ setup(
     author='Clearbit',
     author_email='support@clearbit.com',
     url='https://clearbit.com',
-    packages=['clearbit'],
+    packages=['clearbit', 'clearbit.enrichment'],
     package_data={'clearbit': ['../VERSION']},
     install_requires=install_requires,
     use_2to3=True,

@@ -6,6 +6,7 @@ from .enrichment import Enrichment
 from .enrichment import Company
 from .enrichment import Person
 from .enrichment import PersonCompany
+from prospector import Prospector
 from clearbit.resource import Resource
 from clearbit.watchlist import Watchlist
 from clearbit.watchlist import Entity as WatchlistEntity

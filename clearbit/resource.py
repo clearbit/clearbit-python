@@ -11,18 +11,11 @@ class Resource(dict):
         cls.options['headers'] = {'API-Version': value}
 
     @classmethod
-    def new(cls, item, response=None):
-        instance_s = None
+    def new(cls, item):
         if isinstance(item, list):
-            instance_s = (cls(rec) for rec in item)
-            for instance in instance_s:
-                instance['response'] = response
-
+            return (cls(rec) for rec in item)
         else:
-            instance_s = cls(item)
-            instance_s['response'] = response
-
-        return instance_s
+            return cls(item)
 
     @classmethod
     def extract_options(cls, values):
@@ -48,22 +41,14 @@ class Resource(dict):
 
         response = requests.get(endpoint, **options)
 
-        instance = None
-
         if response.status_code == 200:
-            instance = cls.new(response.json())
+            return cls.new(response.json())
         if response.status_code == 202:
-            instance = cls({ 'pending': True })
+            return cls({ 'pending': True })
         elif response.status_code == requests.codes.not_found:
-            instance = None
+            return None
         else:
             response.raise_for_status()
-
-        if instance:
-            instance['response'] = response
-
-        return instance
-
 
     @classmethod
     def post(cls, url, **values):

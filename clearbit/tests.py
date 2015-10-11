@@ -95,6 +95,5 @@ class TestEnrichment(unittest.TestCase):
         Enrichment.find(email='user@example.com')
         requests.get.assert_called_with('https://person.clearbit.com/v1/combined/email/user@example.com', params={}, auth=('k', ''))
 
-
 if __name__ == '__main__':
-        unittest.main()
+    unittest.main()

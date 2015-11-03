@@ -7,7 +7,7 @@ class Person(Resource):
     @classmethod
     def find(cls, **options):
         if 'email' in options:
-            url = '/email/' + options.pop('email')
+            url = '/find'
         elif 'id' in options:
             url = '/' + options.pop('id')
         else:

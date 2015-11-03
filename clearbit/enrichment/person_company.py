@@ -7,7 +7,7 @@ class PersonCompany(Resource):
     @classmethod
     def find(cls, **options):
         if 'email' in options:
-            url = '/email/' + options.pop('email')
+            url = '/find'
         else:
             raise ParamsInvalidError('Invalid values')
 

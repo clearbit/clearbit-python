@@ -7,7 +7,7 @@ class Company(Resource):
     @classmethod
     def find(cls, **options):
         if 'domain' in options:
-            url = '/domain/' + options.pop('domain')
+            url = '/find'
         elif 'id' in options:
             url = '/' + options.pop('id')
         else:

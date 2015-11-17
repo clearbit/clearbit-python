@@ -8,6 +8,8 @@ class Company(Resource):
     def find(cls, **options):
         if 'domain' in options:
             url = '/find'
+        elif 'id' in options:
+            url = '/' + options.pop('id')
         else:
             raise ParamsInvalidError('Invalid values')
 

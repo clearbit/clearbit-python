@@ -8,6 +8,8 @@ class Person(Resource):
     def find(cls, **options):
         if 'email' in options:
             url = '/find'
+        elif 'id' in options:
+            url = '/' + options.pop('id')
         else:
             raise ParamsInvalidError('Invalid values')
 

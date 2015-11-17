@@ -2,12 +2,12 @@ from clearbit.resource import Resource
 from clearbit.error import (ParamsInvalidError)
 
 class PersonCompany(Resource):
-    endpoint = 'https://person.clearbit.com/v1/combined'
+    endpoint = 'https://person.clearbit.com/v2/combined'
 
     @classmethod
     def find(cls, **options):
         if 'email' in options:
-            url = '/email/' + options.pop('email')
+            url = '/find'
         else:
             raise ParamsInvalidError('Invalid values')
 

@@ -48,3 +48,5 @@ See the [documentation](https://clearbit.com/docs#company-api) for more informat
 Set the `PYTHONPATH` env var to the current directory to load the library locally:
 
     export PYTHONPATH=.
+
+## Deploy

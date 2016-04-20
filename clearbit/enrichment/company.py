@@ -1,5 +1,5 @@
 from clearbit.resource import Resource
-from clearbit.error import (ParamsInvalidError)
+from clearbit.error import ParamsInvalidError
 
 class Company(Resource):
     endpoint = 'https://company.clearbit.com/v2/companies'
@@ -16,4 +16,4 @@ class Company(Resource):
         return cls.get(url, **options)
 
     def flag(self, **attrs):
-        return self.__class__.post('/%s/flag' % self['id'])
+        return self.post('/%s/flag' % self['id'], **attrs)

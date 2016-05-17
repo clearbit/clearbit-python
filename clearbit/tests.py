@@ -48,6 +48,12 @@ class TestPerson(unittest.TestCase):
         Person.find(id='theid')
         requests.get.assert_called_with('https://person.clearbit.com/v2/people/theid', params={}, auth=('k', ''))
 
+    @patch('clearbit.resource.requests')
+    def test_flag(self, requests):
+        person = Person(id='theid')
+        person.flag(given_name='John')
+        requests.post.assert_called_with('https://person.clearbit.com/v2/people/theid/flag', json={'given_name': 'John'}, auth=('k', ''))
+
 class TestCompany(unittest.TestCase):
     @patch('clearbit.resource.requests')
     def test_webhook_url(self, requests):
@@ -73,6 +79,12 @@ class TestCompany(unittest.TestCase):
     def test_find_by_id(self, requests):
         Company.find(id='theid')
         requests.get.assert_called_with('https://company.clearbit.com/v2/companies/theid', params={}, auth=('k', ''))
+
+    @patch('clearbit.resource.requests')
+    def test_flag(self, requests):
+        company = Company(id='theid')
+        company.flag(name='ACME Inc')
+        requests.post.assert_called_with('https://company.clearbit.com/v2/companies/theid/flag', json={'name': 'ACME Inc'}, auth=('k', ''))
 
 class TestEnrichment(unittest.TestCase):
     @patch('clearbit.resource.requests')

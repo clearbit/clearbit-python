@@ -107,5 +107,16 @@ class TestEnrichment(unittest.TestCase):
         Enrichment.find(email='user@example.com')
         requests.get.assert_called_with('https://person.clearbit.com/v2/combined/find', params={'email': 'user@example.com'}, auth=('k', ''))
 
+class TestProspector(unittest.TestCase):
+    @patch('clearbit.resource.requests')
+    def test_search(self, requests):
+        Prospector.search(domain='example.com')
+        requests.get.assert_called_with('https://prospector.clearbit.com/v1/people/search', params={'domain': 'example.com'}, auth=('k', ''))
+
+    @patch('clearbit.resource.requests')
+    def test_search_titles(self, requests):
+        Prospector.search(domain='example.com', titles=['Sales Director', 'Marketing Director'])
+        requests.get.assert_called_with('https://prospector.clearbit.com/v1/people/search', params={'domain': 'example.com', 'titles[]': ['Sales Director', 'Marketing Director']}, auth=('k', ''))
+
 if __name__ == '__main__':
     unittest.main()

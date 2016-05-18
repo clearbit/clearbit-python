@@ -19,7 +19,7 @@ class Prospector(Resource):
 
     def getEmailResponse(self):
       if (self.email_response):
-        return self.email_response
+          return self.email_response
 
-      self.email_response = self.__class__.get('/people/%s/email' % self['id'])
+      self.email_response = self.get('/people/%s/email' % self['id'])
       return self.email_response

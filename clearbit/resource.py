@@ -23,6 +23,10 @@ class Resource(dict):
         options.update(cls.options)
 
         params  = {k: v for k, v in values.items() if k not in cls.valid_options}
+        for k in list(params):
+            if isinstance(params[k], list):
+                params[k + '[]'] = params.pop(k)
+
         options.setdefault('params', {}).update(params)
 
         key = options.pop('key', clearbit.key)

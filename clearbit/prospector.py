@@ -5,8 +5,6 @@ class Prospector(Resource):
 
     @classmethod
     def search(cls, **options):
-        if options.has_key('titles'):
-            options['titles[]'] = options.pop('titles')
         return cls.get('/people/search', **options)
 
     @property

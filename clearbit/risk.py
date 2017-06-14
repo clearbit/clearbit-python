@@ -5,7 +5,7 @@ class Risk(Resource):
 
     @classmethod
     def calculate(cls, **options):
-        response = cls.get('/calculate', **options)
+        response = cls.post('/calculate', **options)
         return(response)
 
     @classmethod

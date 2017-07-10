@@ -9,11 +9,6 @@ class Risk(Resource):
         return(response)
 
     @classmethod
-    def confirmed(cls, **options):
-        response = cls.post('/confirmed', **options)
-        return(response)
-
-    @classmethod
     def flag(cls, **options):
         response = cls.post('/flag', **options)
         return(response)

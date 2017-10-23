@@ -118,5 +118,11 @@ class TestProspector(unittest.TestCase):
         Prospector.search(domain='example.com', titles=['Sales Director', 'Marketing Director'])
         requests.get.assert_called_with('https://prospector.clearbit.com/v1/people/search', params={'domain': 'example.com', 'titles[]': ['Sales Director', 'Marketing Director']}, auth=('k', ''))
 
+class TestNameToDomain(unittest.TestCase):
+    @patch('clearbit.resource.requests')
+    def test_find(self, requests):
+        NameToDomain.find(name='Uber')
+        requests.get.assert_called_with('https://company.clearbit.com/v1/domains/find', params={'name': 'Uber'}, auth=('k', ''))
+
 if __name__ == '__main__':
     unittest.main()

@@ -50,3 +50,5 @@ Set the `PYTHONPATH` env var to the current directory to load the library locall
     export PYTHONPATH=.
 
 ## Deploy
+
+    python setup.py sdist upload -r pypi

@@ -43,6 +43,20 @@ If the company can't be found, then `None` will be returned.
 
 See the [documentation](https://clearbit.com/docs#company-api) for more information.
 
+## Proxy Usage
+
+Passing a proxies dictionary allows you to specify proxy servers to pass the requests through given various protocols.
+
+```python
+
+proxies = {
+  'http': 'http://user:password@proxyserver.tld:8080',
+  'https': 'https://user:password@proxyserver.tld:8080',
+}
+
+response = clearbit.Enrichment.find(email='alex@clearbit.com',proxies=proxies)
+```
+
 ## Testing
 
 Set the `PYTHONPATH` env var to the current directory to load the library locally:

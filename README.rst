@@ -47,7 +47,7 @@ You can lookup company data by domain name::
 
 If the company can't be found, then ``None`` will be returned.
 
-See the `Company API documentation <https://clearbit.com/docs#company-api>` for more information.
+See the `Company API documentation <https://clearbit.com/docs#company-api>`_ for more information.
 
 Proxy Usage
 -----------

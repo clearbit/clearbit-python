@@ -1,7 +1,7 @@
 from clearbit.resource import Resource
 
 class Prospector(Resource):
-    endpoint = 'https://prospector.clearbit.com/v1'
+    endpoint = 'https://prospector.clearbit.com/v2'
 
     @classmethod
     def search(cls, **options):

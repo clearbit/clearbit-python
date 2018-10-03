@@ -43,6 +43,16 @@ If the company can't be found, then `None` will be returned.
 
 See the [documentation](https://clearbit.com/docs#company-api) for more information.
 
+## Name to Domain
+
+You can search for companies using name as a keyword:
+
+```python
+response = clearbit.NameToDomain.find(name='Clearbit')
+```
+
+See the [documentation](https://clearbit.com/docs#name-to-domain-api) for more information.
+
 ## Proxy Usage
 
 Passing a proxies dictionary allows you to specify proxy servers to pass the requests through given various protocols.

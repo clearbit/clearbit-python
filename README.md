@@ -26,7 +26,7 @@ You can also set the API key via the CLEARBIT_KEY environment variable.
 Then you can lookup people by email address. If the email's domain is corporate we'll also return a company response.
 
 ```python
-response = clearbit.Enrichment.find(email='alex@clearbit.com',stream=True)
+response = clearbit.Enrichment.find(email='alex@clearbit.com', stream=True)
 ```
 
 See the [documentation](https://clearbit.com/docs#person-api) for more information.
@@ -43,6 +43,16 @@ If the company can't be found, then `None` will be returned.
 
 See the [documentation](https://clearbit.com/docs#company-api) for more information.
 
+## Name to Domain
+
+You can search for companies using name as a keyword:
+
+```python
+response = clearbit.NameToDomain.find(name='Clearbit')
+```
+
+See the [documentation](https://clearbit.com/docs#name-to-domain-api) for more information.
+
 ## Proxy Usage
 
 Passing a proxies dictionary allows you to specify proxy servers to pass the requests through given various protocols.
@@ -54,7 +64,7 @@ proxies = {
   'https': 'https://user:password@proxyserver.tld:8080',
 }
 
-response = clearbit.Enrichment.find(email='alex@clearbit.com',proxies=proxies)
+response = clearbit.Enrichment.find(email='alex@clearbit.com', proxies=proxies)
 ```
 
 ## Testing

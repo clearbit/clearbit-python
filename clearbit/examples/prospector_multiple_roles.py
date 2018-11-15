@@ -1,7 +1,7 @@
 import clearbit
 
-people = clearbit.Prospector.search(domain='clearbit.com', roles={'sales', 'marketing'})
+response = clearbit.Prospector.search(domain='clearbit.com', roles={'sales', 'marketing'})
 
-for person in people:
+for person in response['results']:
   print(person['name']['fullName'])
   print(person.email)

@@ -2,6 +2,10 @@
 
 A Python API client to [https://clearbit.com](https://clearbit.com).
 
+## Maintenance Status
+
+This repository is currently not actively maintained. If you're looking to integrate with Clearbit's API we recommend looking at the HTTP requests available in our documentation at [clearbit.com/docs](https://clearbit.com/docs)
+
 ## Installation
 
 To install the Clearbit Python bindings, run:

@@ -76,3 +76,13 @@ class Resource(dict):
         response.raise_for_status()
 
         return response
+
+    def get_field(self, field, default):
+        return self.__dict__().get(field, default)
+
+    def __dict__(self):
+        resource_dict = {}
+        for key, value in self.items():
+            resource_dict[key] = value
+        return resource_dict
+    
